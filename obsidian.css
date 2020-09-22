@@ -1,17 +1,17 @@
 /* # font sizes*/
 :root
 {
-    --font-size-normal:              19px;
-    --font-size-code:                15px;
+    --font-size-normal:              21px;
+    --font-size-code:                20px;
     --font-size-side-dock:           15px;
     --font-size-side-dock-title:     18px;
     --font-size-status-bar:          12px;
     --font-size-h1:                  38px;
     --font-size-h2:                  30px;
-    --font-size-h3:                  24px;
-    --font-size-h4:                  21px;
-    --font-size-h5:                  20px;
-    --font-size-h6:                  19px;
+    --font-size-h3:                  28px;
+    --font-size-h4:                  26px;
+    --font-size-h5:                  24px;
+    --font-size-h6:                  22px;
 } 
 
 
