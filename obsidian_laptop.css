@@ -1,0 +1,221 @@
+/* # font sizes*/
+:root
+{
+    --font-size-normal:              21px;
+    --font-size-code:                20px;
+    --font-size-side-dock:           15px;
+    --font-size-side-dock-title:     18px;
+    --font-size-status-bar:          12px;
+    --font-size-h1:                  38px;
+    --font-size-h2:                  30px;
+    --font-size-h3:                  28px;
+    --font-size-h4:                  26px;
+    --font-size-h5:                  24px;
+    --font-size-h6:                  22px;
+} 
+
+
+/* normal text outside of headings and code of editor */
+.cm-s-obsidian, .mod-single-child .cm-s-obsidian {
+  font-size: var(--font-size-normal);
+}
+
+/* normal text outside of headings and code of preview */
+.markdown-preview-view, .mod-single-child .markdown-preview-view {
+  font-size: var(--font-size-normal);
+}
+
+/*preview padding too small*/
+.theme-light .markdown-preview-view, .theme-light .mod-single-child .markdown-preview-view {
+  font-size: var(--font-size-normal);
+}
+
+/* code blocks in preview */
+pre code {
+  font-size: var(--font-size-code) !important;
+}
+
+/* font-size of in-line block for preview */
+.markdown-preview-view code
+{
+  font-size: var(--font-size-code);
+}
+
+/* Editor CodeBlock TEXT Appearance */
+.cm-s-obsidian pre.HyperMD-codeblock {
+  font-size: var(--font-size-code) !important;
+}
+
+.search-result-file-matches, .search-empty-state {
+  font-size: var(--font-size-side-dock);
+}
+
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag-count,
+.workspace-leaf-content[data-type="tag"] .tag-pane-tag-text {  
+  font-size: var(--font-size-side-dock);
+}
+
+.workspace-leaf-content[data-type="backlink"] .search-result-file-matches {
+  font-size: var(--font-size-side-dock);
+}
+
+/* search result in backlink or file search */
+.search-result-file-title {  
+  font-size: var(--font-size-side-dock-title) ;
+}
+
+/*status-bar*/
+.status-bar{
+  font-size: var(--font-size-status-bar);
+}
+
+/* headings for editor and preview */
+.cm-header-1, .markdown-preview-view h1
+{
+  font-size: var(--font-size-h1);
+}
+
+.cm-header-2, .markdown-preview-view h2
+{
+  font-size: var(--font-size-h2);
+}
+
+.cm-header-3, .markdown-preview-view h3
+{
+  font-size: var(--font-size-h3);
+}
+
+.cm-header-4, .markdown-preview-view h4
+{
+  font-size: var(--font-size-h4);
+}
+
+.cm-header-5, .markdown-preview-view h5
+{
+  font-size: var(--font-size-h5);
+}
+
+.cm-header-6, .markdown-preview-view h6
+{
+  font-size: var(--font-size-h6);
+}
+
+
+
+/* # Andy Matuschak mode! V2! for 0.7.0! (so... 2.7?) */
+/*from https://forum.obsidian.md/t/andy-matuschak-mode-v2-7-updated-for-0-7-new-panes/170 */
+
+/* everything under .mod-root now. Don't want Andy messing with sidebars */
+/* also, Andy only makes sense for vertical splits, at the root level, right? */
+.mod-root.workspace-split.mod-vertical { 
+  overflow-x:auto; 
+  --header-width: 36px; /* <- 36px is the header height in the default theme */
+}
+.mod-root.workspace-split.mod-vertical > div { 
+  min-width: calc(700px + var(--header-width)); /* <-- 700px is the default theme's "readable" max-width */
+  box-shadow: 0px 0px 20px 20px rgba(0,0,0,0.25);
+  position:sticky;
+  left:0;
+}
+
+/* shift sticky position, so titles will stack up to the left */
+/* This will currently stack to a maximum of 10 before resetting */
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-8) { left: calc(var(--header-width) * 0); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-7) { left: calc(var(--header-width) * 1); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-6) { left: calc(var(--header-width) * 2); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-5) { left: calc(var(--header-width) * 3); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-4) { left: calc(var(--header-width) * 4); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-3) { left: calc(var(--header-width) * 5); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-2) { left: calc(var(--header-width) * 6); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-1) { left: calc(var(--header-width) * 7); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n+0) { left: calc(var(--header-width) * 8); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n+1) { left: calc(var(--header-width) * 9); }
+
+/* now it's time for the fancy vertical titles */
+
+/* first we'll add a bit of gap for the title to sit inside of */
+.workspace-leaf-content {
+  padding-left: var(--header-width);
+  position: relative;
+}
+
+/* this is where the magic happens */
+.view-header {
+  writing-mode: vertical-lr;
+  border-right: 1px solid var(--background-secondary-alt);
+  border-left: 2px solid var(--background-secondary-alt);
+  border-top: none;
+  border-bottom: none;
+  height: auto;
+  width: var(--header-width);
+  position: absolute;
+  left:0;
+  top:0;
+  bottom:0;
+}
+
+/* active titles have different border colours */
+.workspace-leaf.mod-active .view-header {
+  border-right: 2px solid var(--interactive-accent);
+  border-bottom: none;
+}
+
+/* unset the title container height and swap padding */
+.view-header-title-container {
+  height: unset;
+  padding-left: unset;
+  padding-top: 5px;
+}
+
+/* fix the long-title-obscuring shadows */
+.view-header-title-container:after {
+  width: 100%;
+  height: 30px;
+  top:unset;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--background-secondary));
+}
+.workspace-leaf.mod-active .view-header-title-container:after {
+  background: linear-gradient(to bottom, transparent, var(--background-primary-alt));
+}
+
+/* swap the padding/margin around for the header and actions icons */
+.view-header-icon, .view-actions {
+  padding: 10px 5px;
+}
+.view-action {
+  margin: 8px 0;
+}
+
+/* get rid of the gap left by the now-missing horizontal title */
+.view-content {
+  height: 100%;
+}
+
+/* make the fake drop target overlay have a background so you can see it. */
+/* TODO: figure out how the fake target overlay works so we can put the title back, too */
+.workspace-fake-target-overlay {
+  background-color: var(--background-primary);
+}
+
+/* ## andy mode text flow customization*/
+
+/* If you want to rotate it to the right */
+/*.view-header-title-container {
+  transform: rotate(180deg);
+  text-align: right;
+  margin-top: 10px;
+}
+.view-header-title-container:after {
+  width: 0%;
+}*/
+
+/* Hack to turn writing upright (place me after Andy!) */
+.view-header {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: -5px;
+}
+.view-header-title {
+  padding-right: 0;
+}*/
